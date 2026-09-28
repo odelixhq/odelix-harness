@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "release": "r15.10",
+  "owner": "odelix-harness",
+  "status": "SELECTED_SCOPES_AND_CONDITIONAL_REFERENCE",
+  "source_import_performed": false,
+  "runtime_verified": false,
+  "policy": "Mappings, not source code. Cross-repo destinations are logical owner coordinates, not permission to write siblings. Use existing canonical source pin; UNKNOWN remains unknown until receipt.",
+  "entries": [
+    {
+      "id": "PI",
+      "reuse_kind": "FORK_LIBRARY",
+      "source_ref": "https://github.com/earendil-works/pi/blob/main/packages/coding-agent/docs/sdk.md",
+      "source_commit": null,
+      "source_status": "PIN_REQUIRED",
+      "license_screen": "Прочитаны SDK и package.json. createAgentSession, ModelRuntime, SessionManager, ResourceLoader, subscribe/abort/compact. @earendil-works/pi-coding-agent. Upstream npm workspaces: не переводить fork на pnpm. Blob SDK aaa41531708c9ba624e7e7841bbee6cc16aff086; package.json 4b311456e45361b4d7c7ad2495bad639d233242c. Commit adoption ещё фиксируется HAR-001.",
+      "source_entrypoints": [
+        "packages/coding-agent/docs/sdk.md"
+      ],
+      "destination_repository": "odelix-harness",
+      "destination_paths": [
+        "packages/odelix-runtime/"
+      ],
+      "issue_ids": [
+        "ODX-HAR-001",
+        "ODX-HAR-002",
+        "ODX-HAR-003",
+        "ODX-HAR-019"
+      ],
+      "take": "SDK/runtime/extensions; sanitized optional local client",
+      "exclude": "No core patch; private Skills excluded from client; no second orchestration engine",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "TA",
+      "reuse_kind": "PROCEDURE_ADAPTATION",
+      "source_ref": "https://github.com/TauricResearch/TradingAgents/tree/2d17df8da1536c121e4d7395ac5a5dcec9e96d6f",
+      "source_commit": "2d17df8da1536c121e4d7395ac5a5dcec9e96d6f",
+      "source_status": "INHERITED_REVIEW_PIN_NOT_REAUDITED",
+      "license_screen": "r13: agents/utils/memory.py::TradingMemoryLog.get_past_context, dataflows/sec_edgar.py::_as_of. В этой работе дополнительно прочитан agents/researchers/bull_researcher.py::create_bull_researcher: не переносить persuasive direction и общий debate transcript. Apache-2.0 по r13; LICENSE/NOTICE/transitive deps проверить до adaptation.",
+      "source_entrypoints": [
+        "agents/utils/memory.py",
+        "dataflows/sec_edgar.py",
+        "agents/researchers/bull_researcher.py"
+      ],
+      "destination_repository": "odelix-harness",
+      "destination_paths": [
+        "agents/investigation-team/",
+        "skills/agent-postmortem/"
+      ],
+      "issue_ids": [
+        "ODX-HAR-006",
+        "ODX-HAR-017",
+        "ODX-HAR-018"
+      ],
+      "take": "Bounded roles/challenge/post-mortem; time-aware outcomes as reference",
+      "exclude": "No LangGraph, persona fund, risk authority or persuasive ungrounded debate",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "ALPACA",
+      "reuse_kind": "SELECTIVE_CODE_PORT",
+      "source_ref": "https://github.com/alpacahq/alpaca-mcp-server/tree/9b0c72beda5579de088413ce9c3720456cde8f5f",
+      "source_commit": "9b0c72beda5579de088413ce9c3720456cde8f5f",
+      "source_status": "INHERITED_REVIEW_PIN_NOT_REAUDITED",
+      "license_screen": "r13: src/alpaca_mcp_server/server.py::_make_filter/_make_customizer/_strip_openapi_vendor_extensions; security.py::_extract_payload/_build_envelope/TrustBoundaryMiddleware. MIT по записанному license blob. Не переносить FastMCP, глобальные credentials, default-all tools, validate_output=False или доверие payload sentinel. Source LICENSE на adoption pin перепроверить.",
+      "source_entrypoints": [
+        "src/alpaca_mcp_server/server.py",
+        "src/alpaca_mcp_server/security.py"
+      ],
+      "destination_repository": "odelix-harness",
+      "destination_paths": [
+        "packages/odelix-connect/"
+      ],
+      "issue_ids": [
+        "ODX-HAR-004"
+      ],
+      "take": "Curated catalog/allowlist/trust-boundary envelope",
+      "exclude": "No FastMCP, all-tools-default or credential global context",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "MCP",
+      "reuse_kind": "LIBRARY_DEPENDENCY",
+      "source_ref": "https://ts.sdk.modelcontextprotocol.io/v2/",
+      "source_commit": null,
+      "source_status": "PIN_REQUIRED",
+      "license_screen": "Проверена документация v2: основной новый server package @modelcontextprotocol/server; client package — после проверки выбранного release. Streamable HTTP. Не смешивать v1 import paths с v2; существующий рабочий v1 не мигрировать молча. HAR-004 фиксирует line/tag и interoperability.",
+      "source_entrypoints": [
+        "SDK release selected in HAR-004"
+      ],
+      "destination_repository": "odelix-harness",
+      "destination_paths": [
+        "packages/odelix-connect/"
+      ],
+      "issue_ids": [
+        "ODX-HAR-004"
+      ],
+      "take": "Official wire/transport library",
+      "exclude": "No separate business logic; exact compatible version required",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "DAILY",
+      "reuse_kind": "SELECTIVE_CODE_PORT",
+      "source_ref": "https://github.com/ZhuLinsen/daily_stock_analysis/tree/1168e316269baa38752a8901331a4d7aa8b1fd07",
+      "source_commit": "1168e316269baa38752a8901331a4d7aa8b1fd07",
+      "source_status": "INHERITED_REVIEW_PIN_NOT_REAUDITED",
+      "license_screen": "r13: src/notification_noise.py::parse_notification_quiet_hours/is_time_in_quiet_hours/normalize_notification_severity/validate_notification_timezone. MIT по зафиксированному license blob. Не переносить process-local dicts, глобальный config и fail-open как policy доступа.",
+      "source_entrypoints": [
+        "src/notification_noise.py"
+      ],
+      "destination_repository": "odelix-product",
+      "destination_paths": [
+        "packages/platform/notifications/src/policy/"
+      ],
+      "issue_ids": [
+        "ODX-PRD-023"
+      ],
+      "take": "Timezone/quiet-hours/severity helpers",
+      "exclude": "No global process-only dedup, fail-open or extra Python service",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "AIHF",
+      "reuse_kind": "INTERFACE_REFERENCE",
+      "source_ref": "https://github.com/virattt/ai-hedge-fund/tree/154a8b2f46dca0f40764d814e4e747b0ad71f4c4",
+      "source_commit": "154a8b2f46dca0f40764d814e4e747b0ad71f4c4",
+      "source_status": "INHERITED_REVIEW_PIN_NOT_REAUDITED",
+      "license_screen": "r13: hedge_fund/signals/base.py::AlphaModel.predict; hedge_fund/README.md. MIT. Не копировать _safe_float default=0, пустой percentile=50 и replacement RSI=50; не переносить fund/backtest/risk core.",
+      "source_entrypoints": [
+        "hedge_fund/signals/base.py"
+      ],
+      "destination_repository": "odelix-product",
+      "destination_paths": [
+        "packages/adapters/research-model/"
+      ],
+      "issue_ids": [
+        "ODX-PRD-034",
+        "ODX-PRD-090"
+      ],
+      "take": "ModelSignalPort interface; VALID_NEUTRAL vs ABSTAIN/MISSING",
+      "exclude": "No second fund/backtester; no default neutral numbers on absence",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "FREQTRADE",
+      "reuse_kind": "CONDITIONAL_EXTERNAL_ADAPTER",
+      "source_ref": "https://github.com/freqtrade/freqtrade",
+      "source_commit": null,
+      "source_status": "PIN_REQUIRED",
+      "license_screen": "GPL-3.0 screening inherited from review; exact release/files/licence must be pinned in EXE-014; HTTP is not automatic licence clearance.",
+      "source_entrypoints": [
+        "REST API documented read-only allowlist — exact release pending"
+      ],
+      "destination_repository": "odelix-execution",
+      "destination_paths": [
+        "adapters/freqtrade-readonly/"
+      ],
+      "issue_ids": [
+        "ODX-EXE-014"
+      ],
+      "take": "Independent read-only import; API/file link to permitted event data",
+      "exclude": "No internal plugin or borrowed core by default; GPL assessment depends on actual composition",
+      "import_performed": false,
+      "runtime_acceptance": "NOT_RUN",
+      "receipt_required": [
+        "source_bytes_sha256",
+        "source_license_and_notices",
+        "destination_paths",
+        "patch_digest",
+        "consumer_tests",
+        "reviewer"
+      ]
+    }
+  ],
+  "service_references": [
+    {
+      "id": "JEV",
+      "kind": "CONDITIONAL_SERVICE_NOT_CODE_DONOR",
+      "policy": "Hosted evaluator only; independent audit/memory/training permissions; no automatic event-to-order path.",
+      "issue_ids": [
+        "ODX-STK-012",
+        "ODX-HAR-015",
+        "ODX-HAR-016"
+      ]
+    }
+  ],
+  "jev_permission_operations": {
+    "audit": "PENDING_EVIDENCE",
+    "user_memory": "PENDING_EVIDENCE",
+    "eval": "PENDING_EVIDENCE",
+    "training": "PENDING_EVIDENCE"
+  },
+  "jev_training_boundary": "No distillation/output imitation/competing service. Audit, user memory and eval are distinct permissions; model outputs not silently reused as training corpus."
+}
